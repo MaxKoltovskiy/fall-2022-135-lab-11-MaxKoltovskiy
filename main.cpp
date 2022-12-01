@@ -17,12 +17,23 @@ int main()
     netw.addUser(usrname, dspname);
     std::cout<< "Added user to network with username \""<< usrname<< "\" and display name \""<< dspname<< "\"\n";
 
-    usrname = "fgolberg", dspname = "Frank Goldberg";
+    usrname = "fgoldberg", dspname = "Frank Goldberg";
     netw.addUser(usrname, dspname);
     std::cout<< "Added user to network with username \""<< usrname<< "\" and display name \""<< dspname<< "\"\n";
 
     std::cout<< "\n-----------------------------------------------------------------------------------\n";
 
+    netw.addUser("theodore", "Ted Stevens");
+    netw.addUser("ivanov", "Ivan");
 
+    netw.follow("theodore", "fgoldberg");
+    netw.follow("fgoldberg", "theodore");
+    netw.follow("ivanov", "fgoldberg");
+    netw.follow("jefferson", "theodore");
+    netw.follow("theodore", "ivanov");
+    netw.follow("fgoldberg", "jefferson");
+    netw.follow("ivanov", "jefferson");
+
+    netw.printDot();
 
 }

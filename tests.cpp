@@ -32,3 +32,19 @@ TEST_CASE("Network"){
     CHECK(nw.addUser("yoshi", "Yoshi") == 0);
 
 }
+TEST_CASE("Following"){
+    Network nw;
+    nw.addUser("yoshi", "Yoshi");
+    nw.addUser("mario", "Mario");
+    nw.addUser("luigi", "Luigi");
+
+    nw.follow("yoshi", "mario");
+    nw.follow("mario", "luigi");
+    nw.follow("luigi", "mario");
+    nw.follow("luigi","yoshi");
+
+    CHECK(nw.isfollowing("yoshi", "mario") == true);
+    CHECK(nw.isfollowing("mario", "yoshi") == false);
+    CHECK(nw.isfollowing("mrio", "luigi") == false);
+
+}
